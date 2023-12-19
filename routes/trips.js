@@ -16,4 +16,6 @@ router.post("/", tripsCtrl.create);
 // TRIPS SHOW (GET) - /:id
 router.get("/:id", tripsCtrl.show);
 
+router.delete("/:id", tripsCtrl.delete);
+
 module.exports = router;
