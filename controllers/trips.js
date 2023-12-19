@@ -1,6 +1,8 @@
 // DEPENDENCIES
 const express = require("express");
 const { Trip } = require("../models");
+const token = process.env.TRIPADVISOR_TOKEN;
+const ROOT_URL = "https://api.content.tripadvisor.com/api/v1/location";
 
 // TRIPS INDEX
 const index = async (req, res) => {
@@ -37,10 +39,28 @@ async function destroy(req, res, next) {
   }
 }
 
+async function search(req, res) {
+  try {
+    let endpoint = `${ROOT_URL}/search?key=${token}`;
+    console.log("endpoint: ", endpoint);
+    console.log("token: ", token);
+    const findSearchResponse = await fetch(endpoint, {
+      method: "GET",
+    });
+    console.log(findSearchResponse);
+    const data = await findSearchResponse.json();
+    res.json('api response: ', data);
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "error", error: res.statusText });
+  }
+}
+
 // export controller actions
 module.exports = {
   index,
   create,
   show,
   delete: destroy,
+  search,
 };

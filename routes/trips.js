@@ -16,6 +16,10 @@ router.post("/", tripsCtrl.create);
 // TRIPS SHOW (GET) - /:id
 router.get("/:id", tripsCtrl.show);
 
+// TRIPS DELETE (DELETE) - /:id
 router.delete("/:id", tripsCtrl.delete);
+
+// TRIPS SEARCH LOCATION (POST) - /:id
+router.get("/:id/search", tripsCtrl.search);
 
 module.exports = router;
