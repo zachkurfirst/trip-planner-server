@@ -2,22 +2,18 @@
 const express = require("express");
 const router = express.Router();
 
+const tripsCtrl = require("../controllers/trips");
+
 // ROUTES
 // Routes begin at http://localhost:4000/trips
 
 // TRIPS INDEX (GET) - /
-router.get("/", async (req, res) => {
-  res.status(200).json({ message: "trips index route" });
-});
+router.get("/", tripsCtrl.index);
 
 // TRIPS CREATE (POST) - /
-router.post("/", async (req, res) => {
-  res.status(200).json({ message: "trips create route" });
-});
+router.post("/", tripsCtrl.create);
 
 // TRIPS SHOW (GET) - /:id
-router.get("/:id", async (req, res) => {
-  res.status(200).json({ message: "trips show route", id: req.params.id });
-});
+router.get("/:id", tripsCtrl.show);
 
 module.exports = router;
