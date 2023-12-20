@@ -40,8 +40,10 @@ async function destroy(req, res, next) {
 }
 
 async function search(req, res) {
+  const q = req.query.q;
+  console.log("search q: ", q);
   try {
-    let endpoint = `${ROOT_URL}/search?key=${token}&searchQuery=${"nyc"}&language=en`;
+    let endpoint = `${ROOT_URL}/search?key=${token}&searchQuery=${q}&language=en`;
     console.log("endpoint: ", endpoint);
     const findSearchResponse = await fetch(endpoint, {
       method: "GET",
@@ -49,8 +51,8 @@ async function search(req, res) {
     console.log("RESULTS", findSearchResponse);
     const data = await findSearchResponse.json();
     console.log("DATA", data.data);
-    // res.json("api response: ", data);
-    return data;
+    res.json({ message: "api response", data });
+    // return data;
   } catch (err) {
     console.log(err);
     res.json({ message: "error", error: res.statusText });
