@@ -7,7 +7,10 @@ const TripSchema = new Schema(
     name: { type: String, required: true, maxlengh: 25 },
     description: { type: String, required: true, maxlength: 100 },
     // TODO: location object with fields for city, state?
-    location: { type: String },
+    location: {
+      name: String,
+      id: String,
+    },
     // TODO: validation for date fields - no past dates, endDate must come after startDate
     startDate: { type: Date },
     endDate: { type: Date },
