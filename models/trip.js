@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const TripSchema = new Schema(
   {
+    id: { type: String },
     name: { type: String, required: true, maxlengh: 25 },
     description: { type: String, required: true, maxlength: 100 },
     // TODO: location object with fields for city, state?
