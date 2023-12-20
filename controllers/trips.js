@@ -48,11 +48,11 @@ async function search(req, res) {
     const findSearchResponse = await fetch(endpoint, {
       method: "GET",
     });
-    console.log("RESULTS", findSearchResponse);
+    // console.log("RESULTS", findSearchResponse);
     const data = await findSearchResponse.json();
-    console.log("DATA", data.data);
-    res.json({ message: "api response", data });
-    // return data;
+    // console.log("DATA", data.data);
+    res.json(data);
+    return data;
   } catch (err) {
     console.log(err);
     res.json({ message: "error", error: res.statusText });
