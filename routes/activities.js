@@ -6,7 +6,7 @@ const router = express.Router();
 // Routes begin at http://localhost:4000/trips
 
 // ACTIVITY SEARCH (GET) - /:id/activities
-router.get("/:id/activities", async (req, res) => {
+router.get("/:id/activities/search", async (req, res) => {
   res.status(200).json({ message: "activity search route", id: req.params.id });
 });
 
