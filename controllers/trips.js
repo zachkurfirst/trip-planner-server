@@ -73,6 +73,18 @@ async function search(req, res) {
   }
 }
 
+async function update(req, res) {
+  try {
+    res.status(200).json(
+      await Trip.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      })
+    );
+  } catch (err) {
+    res.status(400).json({ err: err.message });
+  }
+}
+
 // export controller actions
 module.exports = {
   index,
@@ -80,4 +92,5 @@ module.exports = {
   show,
   delete: destroy,
   search,
+  update,
 };

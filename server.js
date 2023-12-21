@@ -8,7 +8,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 const tripsRouter = require("./routes/trips.js");
-const activitesRouter = require("./routes/activities.js");
+const activitiesRouter = require("./routes/activities.js");
 
 // MIDDLEWARE
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 
 // all requests for endpoints beginning with /trips
 app.use("/trips", tripsRouter);
-app.use("/trips", activitesRouter);
+app.use("/trips", activitiesRouter);
 
 // ROUTES
 app.get("/", (req, res) => {
