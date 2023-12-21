@@ -8,7 +8,7 @@ const search = async (req, res) => {
   // console.log("search q: ", q);
   try {
     let endpoint = `${ROOT_URL}/search?key=${token}&searchQuery=${q}&language=en`;
-    let detailEndpoint = `${ROOT_URL}/60763/details?key=${token}&language=en&currency=USD`;
+    let detailEndpoint = `${ROOT_URL}/${q}/details?key=${token}&language=en&currency=USD`;
     // let nearbyEndpoint = `${ROOT_URL}/nearby_search?latLong=${latitude}%2C%20${longitude}&key=${token}&category=attractions&radius=15&radiusUnit=mi&language=en`;
     // console.log("endpoint: ", endpoint);
     const detailResponse = await fetch(detailEndpoint, {
