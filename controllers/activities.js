@@ -22,11 +22,11 @@ const search = async (req, res) => {
       method: "GET",
     });
     const nearbyData = await nearbyResponse.json();
-    console.log({ nearbyData });
+    console.log("NEARBYDATA", nearbyData.data);
     console.log({ detailEndpoint });
     console.log({ nearbyEndpoint });
 
-    res.json(nearbyData);
+    res.json(nearbyData.data);
   } catch (err) {
     console.log(err);
     res.json({ message: "error", error: res.statusText });
