@@ -9,16 +9,15 @@ const search = async () => {
   try {
     let endpoint = `${ROOT_URL}/search?key=${token}&searchQuery=${q}&language=en`;
     let detailEndpoint = `${ROOT_URL}/${location_id}/details?key=${token}&language=en&currency=USD`;
-    let nearbyEndpoint = `${ROOT_URL}/nearby_search?latLong=40.713238%2C%20-74.00584&key=${token}&category=attractions&radius=15&radiusUnit=mi&language=en`;
+    let nearbyEndpoint = `${ROOT_URL}/nearby_search?latLong=${latitude}%2C%20${longitude}&key=${token}&category=attractions&radius=15&radiusUnit=mi&language=en`;
     // console.log("endpoint: ", endpoint);
     const detailResponse = await fetch(detailEndpoint, {
       method: "GET",
     });
 
     const data = await detailResponse.json();
-    const imageData = await Promise.all(imagePromises);
 
-    res.json({ data, imageData });
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.json({ message: "error", error: res.statusText });
