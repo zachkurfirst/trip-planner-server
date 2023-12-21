@@ -22,4 +22,7 @@ router.delete("/:id", tripsCtrl.delete);
 // TRIPS SEARCH LOCATION (POST) - /:id
 router.get("/:id/search", tripsCtrl.search);
 
+// UPDATE TRIP WITH NEW LOCATION
+router.put("/:id", tripsCtrl.update);
+
 module.exports = router;
