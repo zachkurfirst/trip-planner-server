@@ -15,9 +15,10 @@ const search = async () => {
       method: "GET",
     });
 
-    const data = await detailResponse.json();
+    const detailData = await detailResponse.json();
+    console.log(detailData)
 
-    res.json(data);
+    res.json(detailData);
   } catch (err) {
     console.log(err);
     res.json({ message: "error", error: res.statusText });
