@@ -53,8 +53,12 @@ async function search(req, res) {
       const images = await fetch(imageEndpoint, { method: "GET" });
       const imagesData = await images.json();
       const allImagesData = imagesData.data;
-      console.log({ allImagesData });
-      return allImagesData[0].images.large;
+      // console.log({ allImagesData });
+      const fixedImagesData = allImagesData?.[0]?.images?.large;
+      if (!fixedImagesData) {
+        console.log("EMPTY DATA FOUND", fixedImagesData);
+      }
+      return fixedImagesData;
     });
 
     const imageData = await Promise.all(imagePromises);
