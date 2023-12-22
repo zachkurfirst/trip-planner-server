@@ -9,9 +9,7 @@ const search = async (req, res) => {
   const q = req.query.q;
   console.log("search q: ", q);
   try {
-    // let endpoint = `${ROOT_URL}/search?key=${token}&searchQuery=${q}&language=en`;
     let detailEndpoint = `${ROOT_URL}/${q}/details?key=${token}&language=en&currency=USD`;
-    // console.log("endpoint: ", endpoint);
     const detailResponse = await fetch(detailEndpoint, {
       method: "GET",
     });
@@ -22,12 +20,6 @@ const search = async (req, res) => {
     });
     const nearbyData = await nearbyResponse.json();
     const allNearbyData = nearbyData.data;
-    // console.log("LAT", detailData.latitude);
-    // console.log("LONG", detailData.longitude);
-    // console.log("NEARBYDATA", nearbyData.data);
-    // console.log({ detailEndpoint });
-    // console.log({ nearbyEndpoint });
-
     const nearbyPromises = allNearbyData.map(async (n) => {
       let nearbyImageEndpoint = `${ROOT_URL}/${n.location_id}/photos?key=${token}&language=en`;
       const nearbyImages = await fetch(nearbyImageEndpoint, { method: "GET" });
