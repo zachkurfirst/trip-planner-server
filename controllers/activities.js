@@ -33,9 +33,13 @@ const search = async (req, res) => {
       const nearbyImages = await fetch(nearbyImageEndpoint, { method: "GET" });
       const nearbyImagesData = await nearbyImages.json();
       const allNearbyImagesData = nearbyImagesData.data;
-      // console.log({ nearbyImageEndpoint });
-      console.log("IMAGE DATA 0", allNearbyImagesData[0]);
-      return allNearbyImagesData[0].images.large;
+      console.log({ nearbyImageEndpoint });
+      const act = allNearbyImagesData?.[0]?.images?.large;
+      console.log({ act });
+      if (!act) {
+        console.log("EMPTY DATA FOUND", allNearbyImagesData);
+      }
+      return act;
     });
 
     const nearbyDataPromises = await Promise.all(nearbyPromises);
